@@ -96,10 +96,26 @@ header {
   width: 340px;
   height: 181px;
   border-radius: 5px;
-  background-size: 340px 181px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%);
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 .quizz p {
   color: #FFFFFF;
   font-size: 19px;
   padding: 140px 18px 0 18px;
+}
+.quizz-image {
+  width: 340px;
+  height: 181px;
+  border-radius: 5px;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+.quizz-image img {
+  width: 340px;
+  height: 181px;
+  border-radius: 5px;
 }
