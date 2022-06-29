@@ -1,6 +1,7 @@
 function userQuizzes(userQuizArray) { 
   
   let html; 
+ 
   
   if (userQuizArray.length === 0) { 
     html = `
@@ -28,7 +29,3 @@ function userQuizzes(userQuizArray) {
     return `<div>${html}</div>`;
   }
   
-  
-  function createQuizz() { 
-    
-  }
