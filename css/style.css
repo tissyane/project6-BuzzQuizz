@@ -44,7 +44,7 @@ header {
   text-align: center;
 }
 
-.your_quizzes div {
+.button {
   color: #ec362d;
   font-weight: 400;
   font-size: 21px;
@@ -58,4 +58,28 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.personal_quizzes {
+  height: 181px;
+
+  margin-top: 138px;
+  margin-left: calc(100vw - 90%);
+  margin-right: calc(100vw - 90%);
+}
+
+.title {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 23.44px;
+
+  display: flex;
+  align-items: center;
+}
+
+.add_button {
+  background-color: #ffffff;
+  color: #ec362d;
+  font-size: 36px;
+  margin-left: 15px;
 }

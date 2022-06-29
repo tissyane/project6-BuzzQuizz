@@ -18,19 +18,31 @@
     />
     <!-- FavIcon -->
     <link rel="shortcut icon" href="images/favicon.ico" />
-
   </head>
   <body>
-
     <header>
       <h1>BuzzQuizz</h1>
     </header>
 
-    <!-- Tela 'Seus Quizzes - nenhum quiz criado' -->
+    <!-- Tela 'Seus Quizzes - nenhum quizz criado' -->
     <div class="your_quizzes">
       <p class="warning">Você não criou nenhum quizz ainda :(</p>
-      <div onclick="createQuizz()">Criar Quizz</div>
+      <div class="button" onclick="createQuizz()">Criar Quizz</div>
     </div>
 
+    <!-- Tela 'Seus Quizzes - com quizz' -->
+    <div class="personal_quizzes">
+      <div class="title">
+        <h2>Seus Quizzes</h2>
+        <div class="add_button" onclick="createQuizz()">
+          <ion-icon name="add-circle"></ion-icon>
+        </div>
+      </div>
+      <div class="container_quizzes"></div>
+    </div>
+
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="scripts/quizz_list"></script>
   </body>
 </html>
