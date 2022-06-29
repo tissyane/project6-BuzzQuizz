@@ -49,7 +49,7 @@ function escreverQuizzes(list) {
     const QuizzBoard = document.querySelector(".all-quizzes");
     for (let i = 0; i < quizzlist.length; i++){
         QuizzBoard.innerHTML +=`
-        <div class="quizz-image">
+        <div class="quizz-image" onclick="playQuizz()">
             <img src="${quizzlist[i].image}" />
             <div class ="quizz">
                 <p>${quizzlist[i].title}</p>
