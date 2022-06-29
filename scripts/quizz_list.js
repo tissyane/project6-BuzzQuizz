@@ -1,7 +1,11 @@
-function userQuizzes(userQuizArray) { 
+//essa função vai determinar se o usuário já criou ou não algum quizz
+
+let userQuizArray = [];
+
+function userQuizzes() { 
   
   let html; 
- 
+  
   
   if (userQuizArray.length === 0) { 
     html = `
@@ -29,3 +33,11 @@ function userQuizzes(userQuizArray) {
     return `<div>${html}</div>`;
   }
   
+  //essa função vai renderizar o quadro de Quizzes do usuário, escolhendo entre "com" ou "sem" quizz criado
+  function renderUserQuizzes() {
+    let userQuizzesBoard = document.querySelector(".myQuizzes");
+     
+    userQuizzesBoard.innerHTML = userQuizzes();
+  }
+  renderUserQuizzes()
+
