@@ -8,8 +8,7 @@ function escreverQuizzes(list) {
     const QuizzBoard = document.querySelector(".all-quizzes");
     for (let i = 0; i < quizzlist.length; i++){
         QuizzBoard.innerHTML +=`
-        <div class ="quizz">
-            <img class="quizz-img" src="${quizzlist[i].image}" />
+        <div class ="quizz" style="background-image: url('${quizzlist[i].image}');">
             <p>${quizzlist[i].title}</p>
         </div>`
     }
