@@ -3,12 +3,13 @@ promise.then(escreverQuizzes);
 
 //essa função vai receber a lista e passar ela para o HTML
 let quizzlist;
-let userQuizArray = [];
+let userQuizArray = [1];
 function escreverQuizzes(list) {
     quizzlist = list.data;
     const main = document.querySelector("main");
     main.innerHTML = `
         <div class="myQuizzes">
+
         </div>
 
         <div>
