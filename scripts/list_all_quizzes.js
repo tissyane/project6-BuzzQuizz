@@ -3,8 +3,11 @@ promise.then(escreverQuizzes);
 
 //essa função vai receber a lista e passar ela para o HTML
 let quizzlist;
-let userQuizArray = [1];
+let userQuizArray = [];
+
+
 function escreverQuizzes(list) {
+    
     quizzlist = list.data;
     const main = document.querySelector("main");
     main.innerHTML = `
@@ -49,14 +52,16 @@ function escreverQuizzes(list) {
     const QuizzBoard = document.querySelector(".all-quizzes");
     for (let i = 0; i < quizzlist.length; i++){
         QuizzBoard.innerHTML +=`
-        <div class="quizz-image" onclick="playQuizz()">
+        <div class="quizz-image" id="${quizzlist[i].id}" onclick="playQuizz(this)">
             <img src="${quizzlist[i].image}" />
             <div class ="quizz">
                 <p>${quizzlist[i].title}</p>
             </div>
-        </div>`
+        </div>`;
+        
     }
 }
+
 
 
 
