@@ -1,3 +1,6 @@
+*{
+    box-sizing: border-box;
+}
 .start-create {
     margin: 140px auto;
     display: flex;
@@ -39,15 +42,16 @@
 }
 .informacoes-quizz input {
     width: 564px;
-    height: 42px;
+    height: 46px;
     background-color: #FFFFFF;
     border: 1px solid #D1D1D1;
     border-radius: 5px;
+    padding-left: 23px;
 }
 .informacoes-quizz input::placeholder {
     font: 19px;
     font-weight: 400;
     color: #BABABA;
     font-style: italic;
-    padding: 12px 23px;
+    padding: 12px 0;
 }
