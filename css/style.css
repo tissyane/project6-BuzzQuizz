@@ -15,6 +15,7 @@ header {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 2;
 
   display: flex;
   align-items: center;
@@ -26,8 +27,15 @@ header {
   border: 1px dashed #d5d5d5;
   border-radius: 5px;
   margin-top: 146px;
-  margin-left: calc(100vw - 90%);
-  margin-right: calc(100vw - 90%);
+  margin-bottom: 77px;
+
+  /* conferir as margens laterais */
+  /* margin-left: calc(100vw - 90%);
+  margin-right: calc(100vw - 90%); */
+  
+  max-width: 1052px;
+  margin-left: auto;
+  margin-right: auto;
 
   display: flex;
   flex-direction: column;
@@ -60,21 +68,27 @@ header {
   justify-content: center;
 }
 
+.button, .add_button:hover {
+  cursor: pointer;
+}
+
 .personal_quizzes {
   height: 181px;
 
   margin-top: 138px;
-  margin-left: calc(100vw - 90%);
-  margin-right: calc(100vw - 90%);
+  /* margin-left: calc(100vw - 90%);
+  margin-right: calc(100vw - 90%); */
+
+  
 }
 
 .title {
   font-weight: 700;
   font-size: 20px;
   line-height: 23.44px;
-
   display: flex;
   align-items: center;
+  
 }
 
 .add_button {
@@ -82,6 +96,16 @@ header {
   color: #ec362d;
   font-size: 36px;
   margin-left: 15px;
+}
+
+h2 {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 23.44px;
+  max-width: 1052px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 12px;
 }
 
 .all-quizzes {
@@ -119,3 +143,42 @@ header {
   height: 181px;
   border-radius: 5px;
 }
+
+/* Play Quizz */
+
+
+.quizz-header {
+  margin-top: 69px;
+  height: 227px;
+  width: 100vw;
+  position: relative;
+  
+}
+
+.quizz-header img {
+  width: 100%;
+  height: 100%;
+}
+
+.quizz-header h3 {
+  color:#FFFFFF;
+  font-weight: 400;
+  font-size: 39px;
+  line-height: 45.7px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%); 
+  z-index: 1;
+}
+
+.quizz-header .overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  
+}
+
