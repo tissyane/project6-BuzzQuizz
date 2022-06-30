@@ -1,9 +1,9 @@
 //essa função vai requisitar o Quizz selecionado
 
-function playQuizz(this) {
-    console.log(this.id)
-    const promise = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${this.id}`);
-    promise.then(showQuizz(this))
+function playQuizz(quizz) {
+    console.log(quizz.id)
+    const promise = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${quizz.id}`);
+    promise.then(showQuizz(quizz))
     };
     
 //essa função vai renderizar o Quizz selecionado
