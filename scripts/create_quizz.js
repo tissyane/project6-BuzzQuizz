@@ -215,11 +215,11 @@ function createQuizz5() {
             return
         }
         else {
-            if (percentage[i].value === 0){
+            LevelsData[i] = {title: text[i].value, image: image[i].value, 
+                text: description[i].value, minValue: Number(percentage[i].value)}
+            if (LevelsData[i].minValue === 0){
                 contains0 = true;
             }
-            LevelsData[i] = {title: text[i].value, image: image[i].value, 
-                text: description[i].value, minValue: percentage[i].value}
         }
     }
     if (contains0 === false){
@@ -231,7 +231,6 @@ function createQuizz5() {
 }
 
 function createQuizz6(CreatedQuizz) {
-    console.log(CreatedQuizz);
     const id = CreatedQuizz.data.id;
     main.innerHTML = "";
 }
