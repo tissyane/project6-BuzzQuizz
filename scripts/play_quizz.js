@@ -1,8 +1,8 @@
-// Função para requisitar o Quizz selecionado
+
 
 function playQuizz(quizz) {
    
-    const promise = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${quizz.id}`);
+    const promise = axios.get(`${API}/${quizz.id}`);
     promise.then(showQuizz)
     };
 
@@ -38,7 +38,7 @@ function showQuizz(resposta){
             </div>
             `;
         
-            resposta.data.questions[i].answers.sort(comparador)
+            resposta.data.questions[i].answers.sort(aleatory)
             let answerbox = document.querySelector(".answers"+i)
             for (let j = 0; j < resposta.data.questions[i].answers.length; j++){
             answerbox.innerHTML += 
@@ -52,6 +52,7 @@ function showQuizz(resposta){
         }
 }  
     
-    function comparador() { 
+    function aleatory() { 
         return Math.random() - 0.5
     }
+
