@@ -25,7 +25,7 @@
 .create button:hover {
     cursor: pointer;
 }
-.informacoes-quizz {
+.quizz-info {
     width: 600px;
     height: 256px;
     background-color: #FFFFFF;
@@ -33,14 +33,14 @@
     margin-top: 27px;
     margin-bottom: 85px;
 }
-.informacoes-quizz > div {
+.quizz-info > div {
     display: flex;
     flex-direction: column;
     align-items: center;
     row-gap: 9px;
     margin-top: 21px;
 }
-.informacoes-quizz input {
+input {
     width: 564px;
     height: 46px;
     background-color: #FFFFFF;
@@ -48,19 +48,19 @@
     border-radius: 5px;
     padding-left: 23px;
 }
-.informacoes-quizz input::placeholder {
+input::placeholder {
     font: 19px;
     font-weight: 400;
     color: #BABABA;
     font-style: italic;
     padding: 12px 0;
 }
-.perguntas-quizz {
+.quizz-questions {
     width: 600px;
     margin-top: 36px;
     margin-bottom: 57px;
 }
-.pergunta {
+.question {
     margin-bottom: 24px;
     background-color: #FFFFFF;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
@@ -70,16 +70,33 @@
     justify-content: center;
     align-items: center;
 }
-.pergunta h3 {
+.question h3 {
     font-size: 20px;
     font-weight: 700;
 }
-.pergunta > div {
+.question-click {
     width: 100%;
     display: flex;
     justify-content: space-between;
+}
+.question > div {
     padding: 0 20px;
 }
-.pergunta img:hover {
+.question img:hover {
     cursor: pointer;
+}
+.hidden {
+    display: none;
+}
+.question input {
+    margin-top: 14px;
+}
+.question-data h3 {
+    padding-top: 27px
+}
+.question-data div:nth-child(3), .question-data div:nth-child(4) {
+    margin-top: 20px;
+}
+.question-data div:nth-child(4) {
+    margin-bottom: 27px;
 }
