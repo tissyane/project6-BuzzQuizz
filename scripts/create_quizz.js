@@ -115,7 +115,7 @@ function createQuizz3() {
             (rightAnswer[i].value === "" || wrongAnswer1[i].value === "") ||
             (rightAnswerImg[i].value.startsWith("https://") === false ||
                 wrongAnswerImg1[i].value.startsWith("https://") === false)) {
-            alert(`Insira dados válidos na pergunta ${i}`);
+            alert(`Insira dados válidos na pergunta ${i+1}\nÉ obrigatório preencher a resposta correta e a resposta incorreta 1`);
             return
         }
         else {
@@ -125,22 +125,26 @@ function createQuizz3() {
                     { text: rightAnswer[i].value, image: rightAnswerImg[i].value, isCorrectAnswer: true },
                     { text: wrongAnswer1[i].value, image: wrongAnswerImg1[i].value, isCorrectAnswer: false }]
             };
-            if (wrongAnswer2[i].value !== "") {
-                if (wrongAnswerImg2[i].value.startsWith("https://") === false) {
-                    alert(`Insira dados válidos na Resposta incorreta 2 da pergunta ${i}`);
+            if (wrongAnswer2[i].value !== "" || wrongAnswerImg2[i].value !== "") {
+                if (wrongAnswerImg2[i].value.startsWith("https://") === false || wrongAnswer2[i].value === "") {
+                    alert(`Insira dados válidos na Resposta incorreta 2 da pergunta ${i+1}`);
                     return
                 }
                 else {
                     QuestionsData[i].answers.push({ text: wrongAnswer2[i].value, image: wrongAnswerImg2[i].value, isCorrectAnswer: false });
-                    if (wrongAnswer3[i].value !== "") {
-                        if (wrongAnswerImg3[i].value.startsWith("https://") === false) {
-                            alert(`Insira dados válidos na Resposta incorreta 3 da pergunta ${i}`);
-                            return
-                        }
-                        else {
-                            QuestionsData[i].answers.push({ text: wrongAnswer3[i].value, image: wrongAnswerImg3[i].value, isCorrectAnswer: false });
-                        }
+                }
+            }
+            if (wrongAnswer3[i].value !== "" || wrongAnswerImg3[i].value !== "") {
+                if (wrongAnswerImg3[i].value.startsWith("https://") === false || wrongAnswer3[i].value === "") {
+                    alert(`Insira dados válidos na Resposta incorreta 3 da pergunta ${i+1}`);
+                    return
+                }
+                else {
+                    if (wrongAnswer2[i].value === "" || wrongAnswerImg2[i].value === ""){
+                        alert(`Insira dados válidos na Resposta incorreta 2 da pergunta ${i+1} antes de preencher os dados da resposta incorreta 3`);
+                        return
                     }
+                    QuestionsData[i].answers.push({ text: wrongAnswer3[i].value, image: wrongAnswerImg3[i].value, isCorrectAnswer: false });
                 }
             }
         }
