@@ -55,12 +55,12 @@ input::placeholder {
     font-style: italic;
     padding: 12px 0;
 }
-.quizz-questions {
+.quizz-questions, .quizz-levels {
     width: 600px;
     margin-top: 36px;
     margin-bottom: 57px;
 }
-.question {
+.question, .level {
     margin-bottom: 24px;
     background-color: #FFFFFF;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
@@ -70,33 +70,36 @@ input::placeholder {
     justify-content: center;
     align-items: center;
 }
-.question h3 {
+.question h3, .level h3 {
     font-size: 20px;
     font-weight: 700;
 }
-.question-click {
+.question-click, .level-click {
     width: 100%;
     display: flex;
     justify-content: space-between;
 }
-.question > div {
+.question > div, .level > div {
     padding: 0 20px;
 }
-.question img:hover {
+.question img:hover, .level img:hover {
     cursor: pointer;
 }
 .hidden {
     display: none;
 }
-.question input {
+.question input, .level input {
     margin-top: 14px;
 }
-.question-data h3 {
+.question-data h3, .level-data h3 {
     padding-top: 27px
 }
 .question-data div:nth-child(3), .question-data div:nth-child(4) {
     margin-top: 20px;
 }
 .question-data div:nth-child(4) {
+    margin-bottom: 27px;
+}
+.level-data input:nth-child(5) {
     margin-bottom: 27px;
 }

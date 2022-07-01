@@ -158,5 +158,78 @@ function isHex(color) {
 }
 
 function createQuizz4() {
+    main.innerHTML = `
+    <div class="create">
+        <h2>Agora, decida os níveis</h2>
+        <div class="quizz-levels">
+            
+        </div>
+        <button onclick="createQuizz5()">Finalizar Quizz</button>
+    </div>`;
+
+    const levels = document.querySelector(".quizz-levels");
+
+    for (let i = 1; i <= NumberOfLevels; i++){
+        levels.innerHTML += `
+        <div class="level">
+            <div class="level-click">
+                <h3>Nível ${i}</h3>
+                <img onclick="insertLevels(this)" src="images/create.svg" />
+            </div>
+            <div class="level-data hidden">
+                <h3>Nível ${i}</h3>
+                <input placeholder="Título do nível"></input>
+                <input placeholder="% de acerto mínima"></input>
+                <input placeholder="URL da imagem do nível"></input>
+                <input placeholder="Descrição do nível"></input>
+            </div>
+        </div>`;
+    }
+}
+
+function insertLevels(level) {
+    //toggle hide nos icones e aparece as divs de input
+    level = level.parentNode.parentNode;
+    level.querySelector(".level-data").classList.remove("hidden");
+    level.querySelector(".level-click").classList.add("hidden");
+}
+
+//função para armazenar os dados dos níveis
+let LevelsData = [];
+function createQuizz5() {
+    //variáveis usadas para armazenar os dados a serem inseridos no array de nível
+    let text = document.querySelectorAll('[placeholder="Título do nível"]');
+    let percentage = document.querySelectorAll('[placeholder="% de acerto mínima"]');
+    let image = document.querySelectorAll('[placeholder="URL da imagem do nível"]');
+    let description = document.querySelectorAll('[placeholder="Descrição do nível"]');
+
+    let contains0 = false; //para verificar se uma das porcentagens é 0
+
+    for (let i = 0; i < NumberOfLevels; i++){
+        if ((text[i].value.length < 10) ||
+        (isNaN(percentage[i].value) || percentage[i].value < 0 || percentage[i].value > 100) ||
+        (image[i].value.startsWith("https://") === false) ||
+        (description[i].value.length < 30)){
+            alert(`Insira dados válidos para o nível ${i+1}`);
+            return
+        }
+        else {
+            if (percentage[i].value === 0){
+                contains0 = true;
+            }
+            LevelsData[i] = {title: text[i].value, image: image[i].value, 
+                text: description[i].value, minValue: percentage[i].value}
+        }
+    }
+    if (contains0 === false){
+        alert("Insira uma porcentagem igual a 0");
+        return
+    }
+    const promise = axios.post("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes", {title: QuizzTitle, image: QuizzImage, questions: QuestionsData, levels: LevelsData});
+    promise.then(createQuizz6)
+}
+
+function createQuizz6(CreatedQuizz) {
+    const id = CreatedQuizz.data.id;
     main.innerHTML = "";
 }
