@@ -225,11 +225,12 @@ function createQuizz5() {
         alert("Insira uma porcentagem igual a 0");
         return
     }
-    const promise = axios.post("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes", {title: QuizzTitle, image: QuizzImage, questions: QuestionsData, levels: LevelsData});
-    promise.then(createQuizz6)
+    // const promise = axios.post("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes", {title: QuizzTitle, image: QuizzImage, questions: QuestionsData, levels: LevelsData});
+    // promise.then(createQuizz6);
 }
 
 function createQuizz6(CreatedQuizz) {
+    console.log(CreatedQuizz);
     const id = CreatedQuizz.data.id;
     main.innerHTML = "";
 }
