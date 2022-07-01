@@ -5,6 +5,7 @@ let NumberOfQuestions;
 let NumberOfLevels;
 let QuizzQuestions;
 let QuizzLevels;
+let API = "https://mock-api.driven.com.br/api/v7/buzzquizz/quizzes";
 
 let main = document.querySelector("main");
 function createQuizz() {
@@ -225,7 +226,7 @@ function createQuizz5() {
         alert("Insira uma porcentagem igual a 0");
         return
     }
-    const promise = axios.post("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes", {title: QuizzTitle, image: QuizzImage, questions: QuestionsData, levels: LevelsData});
+    const promise = axios.post(API, {title: QuizzTitle, image: QuizzImage, questions: QuestionsData, levels: LevelsData});
     promise.then(createQuizz6)
 }
 

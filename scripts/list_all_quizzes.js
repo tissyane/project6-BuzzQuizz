@@ -1,4 +1,4 @@
-const promise = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes");
+const promise = axios.get(API);
 promise.then(escreverQuizzes);
 
 //essa função vai receber a lista e passar ela para o HTML
