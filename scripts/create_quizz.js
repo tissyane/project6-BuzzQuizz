@@ -230,9 +230,9 @@ function createQuizz5() {
     promise.then(createQuizz6);
 }
 
-let CreatedIds = [];
+let CreatedQuizzList = [];
 function createQuizz6(CreatedQuizz) {
-    CreatedIds.push = CreatedQuizz.data.id;
+    CreatedQuizzList.push = CreatedQuizz.data;
     main.innerHTML =` 
     <div class="create">
         <h2>Seu quizz está pronto!</h2>
@@ -245,4 +245,5 @@ function createQuizz6(CreatedQuizz) {
         <button class="enter-quizz" id="${CreatedQuizz.data.id}" onclick="playQuizz(this)">Acessar Quizz</button>
         <button class="back-button" onclick="homepage()">Voltar pra home</button>
     </div>;`
+    localStorage.setItem(CreatedQuizz.data.id, JSON.stringify(CreatedQuizz.data));
 }
