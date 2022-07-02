@@ -230,7 +230,19 @@ function createQuizz5() {
     promise.then(createQuizz6);
 }
 
+let CreatedIds = [];
 function createQuizz6(CreatedQuizz) {
-    const id = CreatedQuizz.data.id;
-    main.innerHTML = "";
+    CreatedIds.push = CreatedQuizz.data.id;
+    main.innerHTML =` 
+    <div class="create">
+        <h2>Seu quizz está pronto!</h2>
+        <div class="quizz-image">
+            <img src="${CreatedQuizz.data.image}" />
+            <div class ="quizz">
+                <p>${CreatedQuizz.data.title}</p>
+            </div>
+        </div>
+        <button class="enter-quizz" id="${CreatedQuizz.data.id}" onclick="playQuizz(this)">Acessar Quizz</button>
+        <button class="back-button" onclick="homepage()">Voltar pra home</button>
+    </div>;`
 }

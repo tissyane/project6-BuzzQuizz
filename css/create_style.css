@@ -103,3 +103,19 @@ input::placeholder {
 .level-data input:nth-child(5) {
     margin-bottom: 27px;
 }
+.create > .quizz-image {
+    margin-top: 32px;
+    margin-bottom: 45px;
+}
+.create > .back-button {
+    width: 220px;
+    height: 44px;
+    margin-top: 9px;
+    background-color: #FAFAFA;
+    color: #818181;
+}
+.create > .enter-quizz {
+    width: 220px;
+    height: 44px;
+    margin-top: 9px;
+}

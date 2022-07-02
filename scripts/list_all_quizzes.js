@@ -1,5 +1,8 @@
-const promise = axios.get(API);
-promise.then(escreverQuizzes);
+homepage();
+function homepage() {
+  const promise = axios.get(API);
+  promise.then(escreverQuizzes);
+}
 
 //essa função vai receber a lista e passar ela para o HTML
 let quizzlist;
