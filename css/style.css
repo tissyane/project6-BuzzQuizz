@@ -513,8 +513,18 @@ input::placeholder {
   .level > div {
     padding: 0 30px;
   }
-  .create > .quizz-image {
-    max-width: 340px;
+  /* .create > .quizz-image {
+    width: 80vw;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .create {
     width: 100vw;
   }
+  .create > .quizz-image img, .create > .quizz-image > .quizz {
+    width: 85%; 
+  }*/
+  
 }
