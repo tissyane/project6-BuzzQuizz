@@ -1,58 +1,101 @@
-
+let quizzDetails;
 
 function playQuizz(quizz) {
    
     const promise = axios.get(`${API}/${quizz.id}`);
-    promise.then(showQuizz)
-    };
+    promise.then(showQuizz);
+}
 
 // Função para renderizar o Quizz selecionado
 
 function showQuizz(resposta){
-
-        main.innerHTML = 
-        `<div class="openQuizz">
-            <div class="quizz-header">
-                <img src="${resposta.data.image}">
-                <div class="overlay"><div>
-                <h3>${resposta.data.title}</h3>
-            </div>
-            <div>
-                <div class="show_questions"></div>
-            </div>
-            
-        </div>`;  
+    window.scrollTo(0, 0);
+    quizzDetails = resposta.data;
+       
+        main.innerHTML = ` 
+            <div class="openQuizz">
+                <div class="quizz-header">
+                    <img src="${quizzDetails.image}">
+                    <div class="overlay"><div>
+                    <h3>${quizzDetails.title}</h3>
+                </div>
+                <div>
+                    <div class="show_questions"></div>
+                </div>
+            </div>`;  
     
     let questionbox = document.querySelector(".show_questions");
-    
-        
-        for (let i=0; i<resposta.data.questions.length; i++) {
+            
+        for (let i=0; i<quizzDetails.questions.length; i++) {
         main.innerHTML += `
             <div class="container_questions">
-                <div class="questions_header questions_header${i}" style="background-color:${resposta.data.questions[i].color}">
-                    <h4>${resposta.data.questions[i].title}</h4>
+                <div class="questions_header questions_header${i}" style="background-color:${quizzDetails.questions[i].color}">
+                    <h4>${quizzDetails.questions[i].title}</h4>
                 </div>   
                 <div> 
                 <div class="answers answers${i}"></div>
                 </div>                
-            </div>
-            `;
+            </div>`;
         
-            resposta.data.questions[i].answers.sort(aleatory)
-            let answerbox = document.querySelector(".answers"+i)
-            for (let j = 0; j < resposta.data.questions[i].answers.length; j++){
-            answerbox.innerHTML += 
-            `<div class="container_answers ${resposta.data.questions[i].answers[j].isCorrectAnswer}">
-                <div>
-                    <img src="${resposta.data.questions[i].answers[j].image}">
-                    <p>${resposta.data.questions[i].answers[j].text}</p>
-                </div
-            </div>`
+            quizzDetails.questions[i].answers.sort(aleatory)
+            let answerbox = document.querySelector(".answers"+i);
+            for (let j = 0; j < quizzDetails.questions[i].answers.length; j++){
+            answerbox.innerHTML += `
+                <div class="container_answers ${quizzDetails.questions[i].answers[j].isCorrectAnswer}"  onclick="selectAnswer(this)">
+                    <div>
+                        <img src="${quizzDetails.questions[i].answers[j].image}">
+                        <p>${quizzDetails.questions[i].answers[j].text}</p>
+                    </div
+                </div>`;
             }   
         }
 }  
     
-    function aleatory() { 
-        return Math.random() - 0.5
+function aleatory() { 
+    return Math.random() - 0.5;
+} 
+
+function selectAnswer(element) {
+    let nextquestion
+
+    if (!element.classList.contains("open") && !element.classList.contains("other")) {
+		
+        const answers = element.parentNode;
+		
+		element.classList.add("open");
+        
+		for (let child of answers.children) {
+			if (!child.classList.contains("open")) {
+				child.classList.add("other");
+			}
+
+			if (child.classList.contains(true)) {
+				child.classList.add("correct");
+			} else {
+				child.classList.add("wrong");
+			}
+		}
+    
+        nextquestion = element.parentElement.parentElement.parentElement;
+        
+	}
+    
+
+    setTimeout (() => scrollToNextQuestion(nextquestion), 2000);
+}
+
+function scrollToNextQuestion(answeredQuestion) {
+    if (answeredQuestion.nextElementSibling !== null) {
+        answeredQuestion.nextElementSibling.scrollIntoView({
+            top:70,
+            behavior :'smooth'
+        })
+    } else {
+        renderScore();
     }
+}
+
+function renderScore() {
+    console.log("Pŕoximo passo - finalizar o Quizzz!!")
+}
 
