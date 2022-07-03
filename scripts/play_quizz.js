@@ -77,18 +77,10 @@ function selectAnswer(element) {
                 if (child.classList.contains("correct")) {
                     
                 }
-			}
-
-           
-           
-		}
-
-   
-        
-        
+			}  
+		}        
 	}
-    
-    
+        
     setTimeout (() => scrollToNextQuestion(nextquestion), 2000);
 }
 
