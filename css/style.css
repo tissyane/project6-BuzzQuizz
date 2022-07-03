@@ -232,18 +232,27 @@ h2 {
 
 .container_answers{
   
-  width: 688px; 
-  margin: 18px auto;
+  width: 329px; 
+  margin: 18px 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
   
 }
 
+.answers {
+  display: flex;
+  flex-wrap: wrap;
+  width: 688px;
+  margin-left: 35.5px;
+  justify-content: center;
+  column-gap: 30px;
+}
+
 .answer_box {
-  width: 320px;
+  width: 329px;
   word-break: break-all;
-  margin-bottom: 20px;
+
 }
 
 .container_answers p {
@@ -254,7 +263,7 @@ h2 {
 }
 
 .container_answers img {
-  width: 320px;
+  width: 329px;
   height: 175px;
 }
 
