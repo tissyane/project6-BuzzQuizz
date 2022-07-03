@@ -126,6 +126,11 @@ h2 {
   top: 0;
   left: 0;
 }
+
+.quizz:hover {
+  cursor: pointer;
+}
+
 .quizz p {
   color: #FFFFFF;
   font-size: 19px;
@@ -232,6 +237,10 @@ h2 {
 .container_answers img {
   width: 320px;
   height: 175px;
+}
+
+.container_answers:hover {
+  cursor: pointer;
 }
 
 .correct{
