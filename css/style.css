@@ -234,4 +234,18 @@ h2 {
   height: 175px;
 }
 
+.correct{
+  color: #009C22;
+}
 
+.wrong {
+  color: #FF4B4B;
+}
+
+.open {
+  opacity: 1;
+}
+
+.other {
+  opacity: 0.3;
+}
