@@ -58,7 +58,7 @@ function escreverQuizzes(list) {
 
       for (let i = 0; i < userQuizArray.length; i++){
         userQuizzesBoard.querySelector(".container_quizzes").innerHTML +=`
-        <div class="quizz-image" id="${userQuizArray[i].id}" onclick="playQuizz(this)">
+        <div class="quizz-image" id="${userQuizArray[i].id}" onclick="playUserQuizz(this)">
             <img src="${userQuizArray[i].image}" />
             <div class ="quizz">
                 <p>${userQuizArray[i].title}</p>
