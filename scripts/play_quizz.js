@@ -1,8 +1,8 @@
 let quizzDetails;
 let nextquestion;
 let rightAnswers;
-let scoreFinal;
-let quizz; 
+
+
 
 function playQuizz(quizz) {
    
@@ -16,8 +16,9 @@ function showQuizz(resposta){
     window.scrollTo(0, 0);
     quizzDetails = resposta.data;
     quizzSize = quizzDetails.questions.length;  
+    levels = quizzDetails.levels
     rightAnswers = 0;
-    console.log(quizzDetails)
+    
 
         main.innerHTML = ` 
             <div class="openQuizz">
@@ -57,6 +58,7 @@ function playUserQuizz(quizz){
     window.scrollTo(0, 0);
     quizzDetails = JSON.parse(localStorage.getItem(quizz.id));
     quizzSize = quizzDetails.questions.length;  
+    levels = quizzDetails.levels
     rightAnswers = 0;
        
         main.innerHTML = ` 
@@ -155,17 +157,25 @@ function calculateScore() {
 }
 
 
+// função para calcular o nível 
+
+
+
+// função para mostrar o resultado do quizz
+
 function renderScore() {
+    let score = calculateScore();
+    // let level = calculateLevel();
 
     main.innerHTML +=  `
         <div class="container_result">
             <div class="result_header">
-                <h3>${calculateScore()}% de acerto: Level Title</h3>
+                <h3>${score}% de acerto: level.title</h3>
             </div>
             <div class="levelDetails">
                 <img src="level.img" />
                  <p>
-                    Level Text
+                 level.text
                 </p>
              </div>
         </div>
@@ -184,7 +194,7 @@ function renderScore() {
 
 function restartQuizz(){
   
-    document.querySelector(".openQuizz").scrollIntoView();
+    document.querySelector(".openQuizz").scrollIntoView({behavior :'smooth'});
     playQuizz(quizzDetails);
   }
 
