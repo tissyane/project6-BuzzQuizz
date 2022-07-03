@@ -332,7 +332,7 @@ function createQuizz6(CreatedQuizz) {
             </div>
         </div>
         <button class="enter-quizz" id="${CreatedQuizz.data.id}" onclick="playQuizz(this)">Acessar Quizz</button>
-        <button class="back-button" onclick="homepage()">Voltar pra home</button>
+        <button class="back-button" onclick="window.location.reload()">Voltar pra home</button>
     </div>;`
     localStorage.setItem(CreatedQuizz.data.id, JSON.stringify(CreatedQuizz.data));
 }

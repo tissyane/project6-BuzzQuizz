@@ -184,7 +184,7 @@ function renderScore() {
         </div>
         </div>
             <div class="restart-quizz" onclick="restartQuizz()">Reiniciar Quizz</div>
-            <div class="return-home"   onclick="homepage()">Voltar para home</div>
+            <div class="return-home"   onclick="window.location.reload()">Voltar para home</div>
 	    </div>`;  
     
     const showQuizResult = document.querySelector(".container_result");
