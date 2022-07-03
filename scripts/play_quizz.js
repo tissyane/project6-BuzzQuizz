@@ -1,11 +1,12 @@
 let quizzDetails;
 let nextquestion;
 let rightAnswers;
-
-
+let scoreFinal;
+let quizz; 
+let isUserQuizz = false;
 
 function playQuizz(quizz) {
-   
+    isUserQuizz = false;
     const promise = axios.get(`${API}/${quizz.id}`);
     promise.then(showQuizz);
 }
@@ -56,6 +57,7 @@ function showQuizz(resposta){
 
 function playUserQuizz(quizz){
     window.scrollTo(0, 0);
+    isUserQuizz = true;
     quizzDetails = JSON.parse(localStorage.getItem(quizz.id));
     quizzSize = quizzDetails.questions.length;  
     levels = quizzDetails.levels
@@ -194,8 +196,13 @@ function renderScore() {
 
 function restartQuizz(){
   
-    document.querySelector(".openQuizz").scrollIntoView({behavior :'smooth'});
-    playQuizz(quizzDetails);
+    document.querySelector(".openQuizz").scrollIntoView();
+    if(isUserQuizz === false){
+        playQuizz(quizzDetails);
+    }
+    else {
+        playUserQuizz(quizzDetails);
+    }
   }
 
   

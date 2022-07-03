@@ -11,7 +11,7 @@ let userQuizArray = [];
 let userQuizIds = Object.keys(localStorage)
 
 function escreverQuizzes(list) {
-    
+    window.scrollTo(0, 0);
     quizzlist = list.data;
     const main = document.querySelector("main");
     main.innerHTML = `
