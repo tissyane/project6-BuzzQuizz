@@ -19,12 +19,7 @@ function showQuizz(resposta){
                     <div class="overlay"><div>
                     <h3>${quizzDetails.title}</h3>
                 </div>
-                <div>
-                    <div class="show_questions"></div>
-                </div>
             </div>`;  
-    
-    let questionbox = document.querySelector(".show_questions");
             
         for (let i=0; i<quizzDetails.questions.length; i++) {
         main.innerHTML += `

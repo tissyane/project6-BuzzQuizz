@@ -1,7 +1,7 @@
 *{
     box-sizing: border-box;
 }
-.create {
+/* .create {
     margin: 140px auto;
     display: flex;
     flex-direction: column;
@@ -118,4 +118,4 @@ input::placeholder {
     width: 220px;
     height: 44px;
     margin-top: 9px;
-}
+} */
