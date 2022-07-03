@@ -3,8 +3,8 @@ let quizzDetails;
 function playQuizz(quizz) {
    
     const promise = axios.get(`${API}/${quizz.id}`);
-    promise.then(showQuizz)
-    };
+    promise.then(showQuizz);
+}
 
 // Função para renderizar o Quizz selecionado
 
@@ -12,22 +12,20 @@ function showQuizz(resposta){
     window.scrollTo(0, 0);
     quizzDetails = resposta.data;
        
-        main.innerHTML = 
-        `<div class="openQuizz">
-            <div class="quizz-header">
-                <img src="${quizzDetails.image}">
-                <div class="overlay"><div>
-                <h3>${quizzDetails.title}</h3>
-            </div>
-            <div>
-                <div class="show_questions"></div>
-            </div>
-            
-        </div>`;  
+        main.innerHTML = ` 
+            <div class="openQuizz">
+                <div class="quizz-header">
+                    <img src="${quizzDetails.image}">
+                    <div class="overlay"><div>
+                    <h3>${quizzDetails.title}</h3>
+                </div>
+                <div>
+                    <div class="show_questions"></div>
+                </div>
+            </div>`;  
     
     let questionbox = document.querySelector(".show_questions");
-    
-        
+            
         for (let i=0; i<quizzDetails.questions.length; i++) {
         main.innerHTML += `
             <div class="container_questions">
@@ -37,19 +35,18 @@ function showQuizz(resposta){
                 <div> 
                 <div class="answers answers${i}"></div>
                 </div>                
-            </div>
-            `;
+            </div>`;
         
             quizzDetails.questions[i].answers.sort(aleatory)
-            let answerbox = document.querySelector(".answers"+i)
+            let answerbox = document.querySelector(".answers"+i);
             for (let j = 0; j < quizzDetails.questions[i].answers.length; j++){
-            answerbox.innerHTML += 
-            `<div class="container_answers ${quizzDetails.questions[i].answers[j].isCorrectAnswer}"  onclick="selectAnswer(this)">
-                <div>
-                    <img src="${quizzDetails.questions[i].answers[j].image}">
-                    <p>${quizzDetails.questions[i].answers[j].text}</p>
-                </div
-            </div>`
+            answerbox.innerHTML += `
+                <div class="container_answers ${quizzDetails.questions[i].answers[j].isCorrectAnswer}"  onclick="selectAnswer(this)">
+                    <div>
+                        <img src="${quizzDetails.questions[i].answers[j].image}">
+                        <p>${quizzDetails.questions[i].answers[j].text}</p>
+                    </div
+                </div>`;
             }   
         }
 }  
@@ -78,9 +75,9 @@ function selectAnswer(element) {
 				child.classList.add("wrong");
 			}
 		}
-        console.log(answers)
+    
         nextquestion = element.parentElement.parentElement.parentElement;
-        console.log(nextquestion)
+        
 	}
     
 
@@ -89,12 +86,16 @@ function selectAnswer(element) {
 
 function scrollToNextQuestion(answeredQuestion) {
     if (answeredQuestion.nextElementSibling !== null) {
-    answeredQuestion.nextElementSibling.scrollIntoView({
-        behavior :'smooth'
-    })
-    } 
-    // else {
-    //     renderScore(perguntaatual);
-    // }
+        answeredQuestion.nextElementSibling.scrollIntoView({
+            top:70,
+            behavior :'smooth'
+        })
+    } else {
+        renderScore();
+    }
+}
+
+function renderScore() {
+    console.log("Pŕoximo passo - finalizar o Quizzz!!")
 }
 
