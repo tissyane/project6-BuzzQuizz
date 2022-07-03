@@ -1,4 +1,6 @@
 let quizzDetails;
+let nextquestion;
+let qtQuizRightAnswers = 0;
 
 function playQuizz(quizz) {
    
@@ -51,7 +53,9 @@ function aleatory() {
 } 
 
 function selectAnswer(element) {
-    let nextquestion
+    
+    
+    nextquestion = element.parentElement.parentElement.parentElement;
 
     if (!element.classList.contains("open") && !element.classList.contains("other")) {
 		
@@ -66,16 +70,25 @@ function selectAnswer(element) {
 
 			if (child.classList.contains(true)) {
 				child.classList.add("correct");
+                ++qtQuizRightAnswers;
 			} else {
 				child.classList.add("wrong");
+
+                if (child.classList.contains("correct")) {
+                    
+                }
 			}
+
+           
+           
 		}
-    
-        nextquestion = element.parentElement.parentElement.parentElement;
+
+   
+        
         
 	}
     
-
+    
     setTimeout (() => scrollToNextQuestion(nextquestion), 2000);
 }
 
@@ -91,6 +104,6 @@ function scrollToNextQuestion(answeredQuestion) {
 }
 
 function renderScore() {
-    console.log("Pŕoximo passo - finalizar o Quizzz!!")
+    console.log(qtQuizRightAnswers);
 }
 
