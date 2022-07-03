@@ -23,7 +23,7 @@ function showQuizz(resposta){
     console.log(levels);
     rightAnswers = 0;
     questionsAnswered = 0;
-    
+    main.classList.add("enlarge")
 
         main.innerHTML = ` 
             <div class="openQuizz">

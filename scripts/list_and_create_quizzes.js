@@ -14,6 +14,7 @@ function escreverQuizzes(list) {
     window.scrollTo(0, 0);
     quizzlist = list.data;
     const main = document.querySelector("main");
+    main.classList.remove("enlarge")
     main.innerHTML = `
         <div class="myQuizzes">
 
