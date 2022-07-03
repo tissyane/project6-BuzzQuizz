@@ -18,7 +18,7 @@ function showQuizz(resposta){
     window.scrollTo(0, 0);
     quizzDetails = resposta.data;
     quizzSize = quizzDetails.questions.length;  
-    levels = quizzDetails.levels 
+    levels = quizzDetails.levels
     rightAnswers = 0;
     
 
@@ -156,42 +156,29 @@ function scrollToNextQuestion(answeredQuestion) {
 // Função para calcular a pontuação 
 
 function calculateScore() {    
-    return Math.round((rightAnswers/quizzSize)* 100);
+    return Math.round((rightAnswers * 100) / quizzSize);
 }
 
 
 // função para calcular o nível 
 
-function calculateLevel(score) {
-    levels.sort((a, b) => a.minValue - b.minValue);
-    
-    let level = levels[0];
-    for (let i = 1; i < levels.length; i++) {
-      if (score < levels[i].minValue) {
-        return level;
-      }
-  
-      level = levels[i];
-    }
-  
-    return level;
-  }
+
 
 // função para mostrar o resultado do quizz
 
 function renderScore() {
     let score = calculateScore();
-    let level = calculateLevel();
+    // let level = calculateLevel();
 
     main.innerHTML +=  `
         <div class="container_result">
             <div class="result_header">
-                <h3>${score}% de acerto: level.title}</h3>
+                <h3>${score}% de acerto: level.title</h3>
             </div>
             <div class="levelDetails">
-                <img src="level.img}" />
+                <img src="level.img" />
                  <p>
-                 level.text}
+                 level.text
                 </p>
              </div>
         </div>
