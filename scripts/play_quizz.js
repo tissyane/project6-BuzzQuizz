@@ -5,6 +5,7 @@ let scoreFinal;
 let quizz; 
 let isUserQuizz = false;
 let levels;
+let questionsAnswered;
 
 function playQuizz(quizz) {
     isUserQuizz = false;
@@ -18,8 +19,10 @@ function showQuizz(resposta){
     window.scrollTo(0, 0);
     quizzDetails = resposta.data;
     quizzSize = quizzDetails.questions.length;  
-    levels = quizzDetails.levels
+    levels = quizzDetails.levels;
+    console.log(levels);
     rightAnswers = 0;
+    questionsAnswered = 0;
     
 
         main.innerHTML = ` 
@@ -47,7 +50,7 @@ function showQuizz(resposta){
             for (let j = 0; j < quizzDetails.questions[i].answers.length; j++){
             answerbox.innerHTML += `
                 <div class="container_answers ${quizzDetails.questions[i].answers[j].isCorrectAnswer}"  onclick="selectAnswer(this)">
-                    <div>
+                    <div class="answer_box">
                         <img src="${quizzDetails.questions[i].answers[j].image}">
                         <p>${quizzDetails.questions[i].answers[j].text}</p>
                     </div
@@ -63,6 +66,7 @@ function playUserQuizz(quizz){
     quizzSize = quizzDetails.questions.length;  
     levels = quizzDetails.levels
     rightAnswers = 0;
+    questionsAnswered = 0;
        
         main.innerHTML = ` 
             <div class="openQuizz">
@@ -137,6 +141,10 @@ function selectAnswer(element) {
         if (element.classList.contains("correct")){
             rightAnswers++;
         }  
+
+        if (element.classList.contains("open")){
+            questionsAnswered++;
+        }  
 	}
     
     setTimeout (() => scrollToNextQuestion(nextquestion), 2000);
@@ -148,9 +156,12 @@ function scrollToNextQuestion(answeredQuestion) {
             top:70,
             behavior :'smooth'
         })
-    } else {
+    } 
+    if (questionsAnswered === quizzSize){
         renderScore();
     }
+        
+    
 }
 
 // Função para calcular a pontuação 
@@ -162,29 +173,46 @@ function calculateScore() {
 
 // função para calcular o nível 
 
+function calculateLevel (score) {
 
+    levels = levels.sort((a, b) => b.minValue - a.minValue);
+    console.log(levels);
+    let level;  
+    
+    for (let i = 0; i < levels.length; i++) {
+      if (score < levels[i].minValue) {
+        continue;
+      }
+
+      level = levels[i];
+      break;
+    }
+    
+    return level;
+}   
 
 // função para mostrar o resultado do quizz
 
 function renderScore() {
-    let score = calculateScore();
-    // let level = calculateLevel();
 
+    let score = calculateScore();
+    let level = calculateLevel(score);
+    
     main.innerHTML +=  `
         <div class="container_result">
             <div class="result_header">
-                <h3>${score}% de acerto: level.title</h3>
+                <h3>${score}% de acerto: ${level.title}</h3>
             </div>
             <div class="levelDetails">
-                <img src="level.img" />
+                <img src="${level.image}" />
                  <p>
-                 level.text
+                 ${level.text}
                 </p>
              </div>
         </div>
         </div>
             <div class="restart-quizz" onclick="restartQuizz()">Reiniciar Quizz</div>
-            <div class="return-home"   onclick="homepage()">Voltar para home</div>
+            <div class="return-home"   onclick="window.location.reload()">Voltar para home</div>
 	    </div>`;  
     
     const showQuizResult = document.querySelector(".container_result");
