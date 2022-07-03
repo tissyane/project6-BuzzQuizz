@@ -4,6 +4,7 @@ let rightAnswers;
 let scoreFinal;
 let quizz; 
 let isUserQuizz = false;
+let levels;
 
 function playQuizz(quizz) {
     isUserQuizz = false;

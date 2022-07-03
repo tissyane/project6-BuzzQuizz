@@ -19,7 +19,7 @@ function escreverQuizzes(list) {
 
         </div>
 
-        <div>
+        <div class="other-quizzes">
             <div>
                 <h2>Todos os Quizzes</h2>
             </div>
@@ -42,10 +42,8 @@ function escreverQuizzes(list) {
         userQuizzesBoard.innerHTML = `
       <div class="personal_quizzes">
         <div class="title">
-          <h2>Seus Quizzes</h2>
-          <div class="add_button" onclick="createQuizz()">
-            <ion-icon name="add-circle"></ion-icon>
-          </div>
+            <h2>Seus Quizzes</h2>
+            <ion-icon name="add-circle" class="add_button" onclick="createQuizz()"></ion-icon>
         </div>
         <div class="container_quizzes">
     
