@@ -1,6 +1,8 @@
 let quizzDetails;
 let nextquestion;
-let qtQuizRightAnswers = 0;
+let rightAnswers;
+let scoreFinal;
+let quizz; 
 
 function playQuizz(quizz) {
    
@@ -13,7 +15,10 @@ function playQuizz(quizz) {
 function showQuizz(resposta){
     window.scrollTo(0, 0);
     quizzDetails = resposta.data;
-       
+    quizzSize = quizzDetails.questions.length;  
+    rightAnswers = 0;
+    console.log(quizzDetails)
+
         main.innerHTML = ` 
             <div class="openQuizz">
                 <div class="quizz-header">
@@ -47,13 +52,58 @@ function showQuizz(resposta){
             }   
         }
 }  
+
+function playUserQuizz(quizz){
+    window.scrollTo(0, 0);
+    quizzDetails = JSON.parse(localStorage.getItem(quizz.id));
+    quizzSize = quizzDetails.questions.length;  
+    rightAnswers = 0;
+       
+        main.innerHTML = ` 
+            <div class="openQuizz">
+                <div class="quizz-header">
+                    <img src="${quizzDetails.image}">
+                    <div class="overlay"><div>
+                    <h3>${quizzDetails.title}</h3>
+                </div>
+            </div>`;  
+            
+        for (let i=0; i<quizzDetails.questions.length; i++) {
+        main.innerHTML += `
+            <div class="container_questions">
+                <div class="questions_header questions_header${i}" style="background-color:${quizzDetails.questions[i].color}">
+                    <h4>${quizzDetails.questions[i].title}</h4>
+                </div>   
+                <div> 
+                <div class="answers answers${i}"></div>
+                </div>
+                <div> 
+                <div class="result"></div>
+                </div>                  
+            </div>`;
+        
+            quizzDetails.questions[i].answers.sort(aleatory)
+            let answerbox = document.querySelector(".answers"+i);
+            for (let j = 0; j < quizzDetails.questions[i].answers.length; j++){
+            answerbox.innerHTML += `
+                <div class="container_answers ${quizzDetails.questions[i].answers[j].isCorrectAnswer}"  onclick="selectAnswer(this)">
+                    <div>
+                        <img src="${quizzDetails.questions[i].answers[j].image}">
+                        <p>${quizzDetails.questions[i].answers[j].text}</p>
+                    </div
+                </div>`;
+            }   
+        }
+}
     
 function aleatory() { 
     return Math.random() - 0.5;
 } 
 
+// Função para controlar o comportamento das respostas 
+
 function selectAnswer(element) {
-    
+   
     
     nextquestion = element.parentElement.parentElement.parentElement;
 
@@ -62,25 +112,28 @@ function selectAnswer(element) {
         const answers = element.parentNode;
 		
 		element.classList.add("open");
+
         
 		for (let child of answers.children) {
+            
 			if (!child.classList.contains("open")) {
 				child.classList.add("other");
 			}
 
 			if (child.classList.contains(true)) {
-				child.classList.add("correct");
-                ++qtQuizRightAnswers;
+                child.classList.add("correct");
+                
+               
 			} else {
 				child.classList.add("wrong");
-
-                if (child.classList.contains("correct")) {
-                    
-                }
+                
 			}  
-		}        
+		}       
+        if (element.classList.contains("correct")){
+            rightAnswers++;
+        }  
 	}
-        
+    
     setTimeout (() => scrollToNextQuestion(nextquestion), 2000);
 }
 
@@ -95,7 +148,44 @@ function scrollToNextQuestion(answeredQuestion) {
     }
 }
 
-function renderScore() {
-    console.log(qtQuizRightAnswers);
+// Função para calcular a pontuação 
+
+function calculateScore() {    
+    return Math.round((rightAnswers * 100) / quizzSize);
 }
 
+
+function renderScore() {
+
+    main.innerHTML +=  `
+        <div class="container_result">
+            <div class="result_header">
+                <h3>${calculateScore()}% de acerto: Level Title</h3>
+            </div>
+            <div class="levelDetails">
+                <img src="level.img" />
+                 <p>
+                    Level Text
+                </p>
+             </div>
+        </div>
+        </div>
+            <div class="restart-quizz" onclick="restartQuizz()">Reiniciar Quizz</div>
+            <div class="return-home"   onclick="homepage()">Voltar para home</div>
+	    </div>`;  
+    
+    const showQuizResult = document.querySelector(".container_result");
+    showQuizResult.scrollIntoView({
+        behavior :'smooth'
+    });
+    
+}
+
+
+function restartQuizz(){
+  
+    document.querySelector(".openQuizz").scrollIntoView();
+    playQuizz(quizzDetails);
+  }
+
+  

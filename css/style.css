@@ -381,3 +381,78 @@ input::placeholder {
   height: 44px;
   margin-top: 9px;
 }
+
+/* Resultado  */
+
+.container_result {
+  
+  background-color: #ffffff;
+  margin: 50px auto;
+  padding-top: 18px;
+  width: 759px;
+  height: 430px;
+}
+
+.result_header {
+  background-color: #ec362d;
+  width: 95%;
+  height: 99px;
+  margin: 30px auto;
+  font-size: 23px;
+  font-weight: 700;
+  line-height: 26.95px;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.levelDetails {
+  padding-left: 18px;
+  padding-right: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.levelDetails img {
+  width: 364px;
+  margin-right: 20px;
+}
+
+.levelDetails p {
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 25px;
+  color: #484848;
+  word-break: break-word;
+}
+
+.restart-quizz, .return-home { 
+  width: 260.38px;
+  height: 52px;
+  
+  margin: 8px auto;
+  
+  border: none;
+  border-radius: 15px;
+  font-size: 21px;
+  font-weight: 400;
+  line-height: 24.61px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.restart-quizz {
+  background-color: #EC362D;
+  color: #FFF5F4;
+}
+
+.return-home {
+  color: #818181;
+}
+
+.restart-quizz:hover, .return-home:hover { 
+  cursor: pointer;
+}
