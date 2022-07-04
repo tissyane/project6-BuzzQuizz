@@ -137,6 +137,7 @@ h2 {
   position: absolute;
   top: 0;
   left: 0;
+  word-break: break-word;
 }
 
 .quizz:hover {
@@ -613,7 +614,31 @@ input::placeholder {
   margin-top: 34px;
 }
 
+.all-quizzes, .container_quizzes {
+  max-width: 1052px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  row-gap: 12px;
+  column-gap: 15px;
+}
 
+.quizz {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #EC362D;
+}
+
+.quizz-image {
+  position: relative;
+  top: 0;
+  left: calc(100vw - 85%);
+}
+
+.other-quizzes h2 {
+  margin-left: 30px;
+}
   /* .create > .quizz-image {
     width: 80vw;
     margin: 0 auto;
