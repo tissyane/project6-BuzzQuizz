@@ -160,6 +160,7 @@ function scrollToNextQuestion(answeredQuestion) {
     } 
     if (questionsAnswered === quizzSize){
         renderScore();
+        return
     }
         
     
