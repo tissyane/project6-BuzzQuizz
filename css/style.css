@@ -91,6 +91,7 @@ header {
   flex-direction: column;
   margin: 0 auto;
 }
+
 .other-quizzes {
 
   display: flex;
@@ -103,6 +104,7 @@ header {
   align-items: center;
   margin-bottom: 10px;
   height: 32px;
+  
 }
 
 .add_button {
@@ -540,6 +542,13 @@ input::placeholder {
 
   .your_quizzes {
     width: 92vw;
+    margin-top: 100px;
+    margin-bottom: 35px;
+  }
+
+  .button {
+    width: 151px;
+ 
   }
  
   .quizz-header {
@@ -578,10 +587,7 @@ input::placeholder {
   margin: 0 auto;
   
   column-gap: 12px;
-  justify-content: space-evenly;
-  
-  
-  
+  justify-content: space-evenly;  
 }
 
 .container_answers p {
@@ -599,8 +605,7 @@ input::placeholder {
   margin: 24px auto;
   padding-top: 18px;
   padding-bottom: 14px;
-  width: 100vw;
-  
+  width: 100vw; 
 }
 
 .result_header {
@@ -643,15 +648,38 @@ input::placeholder {
 }
 
 .all-quizzes, .container_quizzes {
-  max-width: 1052px;
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0 auto;
-  row-gap: 12px;
-  column-gap: 15px;
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .quizz {
+  width: 100%;
+  margin: 0 auto;
+  
+}
+
+.quizz-image {
+  width: 100%;
+  margin: 0 auto;
+  
+}
+
+.quizz-image img {
+  width: 100%;
+}
+
+.other-quizzes h2 {
+  margin-left: 15px;
+}
+
+.title {
+  justify-content: space-between;
+  padding-left: 15px;
+  padding-right: 15px;
+  
+}
+/* .quizz {
   position: absolute;
   top: 0;
   left: 0;
@@ -662,11 +690,9 @@ input::placeholder {
   position: relative;
   top: 0;
   left: calc(100vw - 85%);
-}
+} */
 
-.other-quizzes h2 {
-  margin-left: 30px;
-}
+
   /* .create > .quizz-image {
     width: 80vw;
     margin: 0 auto;
