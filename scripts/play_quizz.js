@@ -154,8 +154,9 @@ function selectAnswer(element) {
 function scrollToNextQuestion(answeredQuestion) {
     if (answeredQuestion.nextElementSibling !== null) {
         answeredQuestion.nextElementSibling.scrollIntoView({
-            top:70,
-            behavior :'smooth'
+            behavior :'smooth',
+            block: 'center',
+            inline: 'center'
         })
     } 
     if (questionsAnswered === quizzSize){
