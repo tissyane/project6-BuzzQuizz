@@ -680,15 +680,30 @@ input::placeholder {
   width: 100%;
 }
 
+.other-quizzes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .other-quizzes h2 {
-  margin-left: 15px;
+  max-width: 1052px;
+  width: 100vw;
+  padding: 0 15px
+}
+
+.personal_quizzes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .title {
   justify-content: space-between;
   padding-left: 15px;
   padding-right: 15px;
-  
+  max-width: 1052px;
+  width: 100%;
 }
 
 .create {
