@@ -1,8 +1,9 @@
 let API = "https://mock-api.driven.com.br/api/v7/buzzquizz/quizzes";
 homepage();
 function homepage() {
-  const promise = axios.get(API);
-  promise.then(escreverQuizzes);
+    const promise = axios.get(API);
+    promise.then(escreverQuizzes);
+    loading();
 }
 
 //essa função vai receber a lista e passar ela para o HTML
@@ -32,7 +33,7 @@ function escreverQuizzes(list) {
     //essa função vai determinar se o usuário já criou ou não algum quizz
     let userQuizzesBoard = document.querySelector(".myQuizzes");
     console.log(localStorage);
-    if (localStorage.length === 0){
+    if (localStorage.length === 0) {
         userQuizzesBoard.innerHTML = `
         <div class="your_quizzes">
           <p class="warning">Você não criou nenhum quizz ainda :(</p>
@@ -51,39 +52,43 @@ function escreverQuizzes(list) {
         </div>
       </div>`;
 
-      for (let i = 0; i < localStorage.length; i++){
-        userQuizArray[i] = JSON.parse(localStorage.getItem(userQuizIds[i]));
-      }
+        for (let i = 0; i < localStorage.length; i++) {
+            userQuizArray[i] = JSON.parse(localStorage.getItem(userQuizIds[i]));
+        }
 
-      for (let i = 0; i < userQuizArray.length; i++){
-        userQuizzesBoard.querySelector(".container_quizzes").innerHTML +=`
+        for (let i = 0; i < userQuizArray.length; i++) {
+            userQuizzesBoard.querySelector(".container_quizzes").innerHTML += `
         <div class="quizz-image" id="${userQuizArray[i].id}" onclick="playUserQuizz(this)">
             <img src="${userQuizArray[i].image}" />
             <div class ="quizz">
                 <p>${userQuizArray[i].title}</p>
+                <div class="edit-delete">
+                    <ion-icon name="create-outline" class="edit" onclick="editQuizz(${i})"></ion-icon>
+                    <ion-icon name="trash-outline" onclick="deleteQuizz(${i})"></ion-icon>
+                </div>
             </div>
         </div>`
-      }
+        }
     }
 
     const QuizzBoard = document.querySelector(".all-quizzes");
     loop1:
-      for (let i = 0; i < quizzlist.length; i++){
+    for (let i = 0; i < quizzlist.length; i++) {
         loop2:
-          for(let j = 0; j < userQuizArray.length; j++){
-            if (quizzlist[i].id === userQuizArray[j].id){
-              continue loop1
+        for (let j = 0; j < userQuizArray.length; j++) {
+            if (quizzlist[i].id === userQuizArray[j].id) {
+                continue loop1
             }
-          }
-          QuizzBoard.innerHTML +=`
+        }
+        QuizzBoard.innerHTML += `
           <div class="quizz-image" id="${quizzlist[i].id}" onclick="playQuizz(this)">
               <img src="${quizzlist[i].image}" />
               <div class ="quizz">
                   <p>${quizzlist[i].title}</p>
               </div>
           </div>`;
-          
-      }
+
+    }
 }
 
 
@@ -207,7 +212,7 @@ function createQuizz3() {
             (rightAnswer[i].value === "" || wrongAnswer1[i].value === "") ||
             (rightAnswerImg[i].value.startsWith("https://") === false ||
                 wrongAnswerImg1[i].value.startsWith("https://") === false)) {
-            alert(`Insira dados válidos na pergunta ${i+1}\nÉ obrigatório preencher a resposta correta e a resposta incorreta 1`);
+            alert(`Insira dados válidos na pergunta ${i + 1}\nÉ obrigatório preencher a resposta correta e a resposta incorreta 1`);
             return
         }
         else {
@@ -219,7 +224,7 @@ function createQuizz3() {
             };
             if (wrongAnswer2[i].value !== "" || wrongAnswerImg2[i].value !== "") {
                 if (wrongAnswerImg2[i].value.startsWith("https://") === false || wrongAnswer2[i].value === "") {
-                    alert(`Insira dados válidos na Resposta incorreta 2 da pergunta ${i+1}`);
+                    alert(`Insira dados válidos na Resposta incorreta 2 da pergunta ${i + 1}`);
                     return
                 }
                 else {
@@ -228,12 +233,12 @@ function createQuizz3() {
             }
             if (wrongAnswer3[i].value !== "" || wrongAnswerImg3[i].value !== "") {
                 if (wrongAnswerImg3[i].value.startsWith("https://") === false || wrongAnswer3[i].value === "") {
-                    alert(`Insira dados válidos na Resposta incorreta 3 da pergunta ${i+1}`);
+                    alert(`Insira dados válidos na Resposta incorreta 3 da pergunta ${i + 1}`);
                     return
                 }
                 else {
-                    if (wrongAnswer2[i].value === "" || wrongAnswerImg2[i].value === ""){
-                        alert(`Insira dados válidos na Resposta incorreta 2 da pergunta ${i+1} antes de preencher os dados da resposta incorreta 3`);
+                    if (wrongAnswer2[i].value === "" || wrongAnswerImg2[i].value === "") {
+                        alert(`Insira dados válidos na Resposta incorreta 2 da pergunta ${i + 1} antes de preencher os dados da resposta incorreta 3`);
                         return
                     }
                     QuestionsData[i].answers.push({ text: wrongAnswer3[i].value, image: wrongAnswerImg3[i].value, isCorrectAnswer: false });
@@ -261,7 +266,7 @@ function createQuizz4() {
 
     const levels = document.querySelector(".quizz-levels");
 
-    for (let i = 1; i <= NumberOfLevels; i++){
+    for (let i = 1; i <= NumberOfLevels; i++) {
         levels.innerHTML += `
         <div class="level">
             <div class="level-click">
@@ -297,33 +302,35 @@ function createQuizz5() {
 
     let contains0 = false; //para verificar se uma das porcentagens é 0
 
-    for (let i = 0; i < NumberOfLevels; i++){
+    for (let i = 0; i < NumberOfLevels; i++) {
         if ((text[i].value.length < 10) ||
-        (isNaN(percentage[i].value) || percentage[i].value < 0 || percentage[i].value > 100) ||
-        (image[i].value.startsWith("https://") === false) ||
-        (description[i].value.length < 30)){
-            alert(`Insira dados válidos para o nível ${i+1}`);
+            (isNaN(percentage[i].value) || percentage[i].value < 0 || percentage[i].value > 100) ||
+            (image[i].value.startsWith("https://") === false) ||
+            (description[i].value.length < 30)) {
+            alert(`Insira dados válidos para o nível ${i + 1}`);
             return
         }
         else {
-            LevelsData[i] = {title: text[i].value, image: image[i].value, 
-                text: description[i].value, minValue: Number(percentage[i].value)}
-            if (LevelsData[i].minValue === 0){
+            LevelsData[i] = {
+                title: text[i].value, image: image[i].value,
+                text: description[i].value, minValue: Number(percentage[i].value)
+            }
+            if (LevelsData[i].minValue === 0) {
                 contains0 = true;
             }
         }
     }
-    if (contains0 === false){
+    if (contains0 === false) {
         alert("Insira uma porcentagem igual a 0");
         return
     }
-    const promise = axios.post(API, {title: QuizzTitle, image: QuizzImage, questions: QuestionsData, levels: LevelsData});
+    const promise = axios.post(API, { title: QuizzTitle, image: QuizzImage, questions: QuestionsData, levels: LevelsData });
     promise.then(createQuizz6);
 }
 
 function createQuizz6(CreatedQuizz) {
     // userQuizArray.push = CreatedQuizz.data;
-    main.innerHTML =` 
+    main.innerHTML = ` 
     <div class="create">
         <h2>Seu quizz está pronto!</h2>
         <div class="quizz-image">
@@ -336,4 +343,29 @@ function createQuizz6(CreatedQuizz) {
         <button class="back-button" onclick="window.location.reload()">Voltar pra home</button>
     </div>;`
     localStorage.setItem(CreatedQuizz.data.id, JSON.stringify(CreatedQuizz.data));
+}
+
+function loading() {
+    document.querySelector("main").innerHTML = `
+    <div class="loader">
+        <img src="images/loader.gif">
+        <p>Carregando...</p>
+    </div>`;
+}
+
+function deleteQuizz(quizz) {
+    quizz = userQuizArray[quizz];
+    if (window.confirm(`Você realmente deseja apagar o quizz ${quizz.title}?`)) {
+        let SecretKey = quizz.key;
+        let promise = axios.delete(`${API}/${quizz.id}`, {
+            headers: {
+                'Secret-Key': SecretKey
+            }
+        })
+        promise.catch(() => alert("Um erro foi encontrado ao tentar remover o quizz"))
+        promise.then(() => {
+            localStorage.removeItem(`${quizz.id}`)
+            window.location.reload();
+        })
+    }
 }

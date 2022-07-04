@@ -11,6 +11,7 @@ function playQuizz(quizz) {
     isUserQuizz = false;
     const promise = axios.get(`${API}/${quizz.id}`);
     promise.then(showQuizz);
+    loading();
 }
 
 // Função para renderizar o Quizz selecionado
