@@ -149,7 +149,7 @@ function selectAnswer(element) {
     }
 
     if (questionsAnswered === quizzSize) {
-        setTimeout(() => {renderScore()}, 2000);
+        setTimeout(renderScore, 2000);
         
     }
     setTimeout(() => scrollToNextQuestion(nextquestion), 2000);
