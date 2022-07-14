@@ -1,4 +1,4 @@
-let API = "https://mock-api.driven.com.br/api/v7/buzzquizz/quizzes";
+let API = "https://mock-api.driven.com.br/api/vs/buzzquizz/quizzes";
 homepage();
 function homepage() {
     const promise = axios.get(API);
